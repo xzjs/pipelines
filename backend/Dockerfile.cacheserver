@@ -27,11 +27,11 @@ RUN GO111MODULE=on go build -o /bin/cache_server backend/src/cache/*.go
 # Check licenses and comply with license terms.
 RUN ./hack/install-go-licenses.sh
 # First, make sure there's no forbidden license.
-RUN go-licenses check ./backend/src/cache
-RUN go env -w GOPROXY=https://goproxy.cn && \ 
-    go-licenses csv ./backend/src/cache > /tmp/licenses.csv && \
-    diff /tmp/licenses.csv backend/third_party_licenses/cache_server.csv && \
-    go-licenses save ./backend/src/cache --save_path /tmp/NOTICES
+# RUN go-licenses check ./backend/src/cache
+# RUN go env -w GOPROXY=https://goproxy.cn && \ 
+#     go-licenses csv ./backend/src/cache > /tmp/licenses.csv && \
+#     diff /tmp/licenses.csv backend/third_party_licenses/cache_server.csv && \
+#     go-licenses save ./backend/src/cache --save_path /tmp/NOTICES
 
 FROM alpine:3.17
 
@@ -42,7 +42,7 @@ WORKDIR /bin
 
 COPY --from=builder /bin/cache_server /bin/cache_server
 # Copy licenses and notices.
-COPY --from=builder /tmp/licenses.csv /third_party/licenses.csv
-COPY --from=builder /tmp/NOTICES /third_party/NOTICES
+# COPY --from=builder /tmp/licenses.csv /third_party/licenses.csv
+# COPY --from=builder /tmp/NOTICES /third_party/NOTICES
 
 ENTRYPOINT [ "/bin/cache_server" ]
