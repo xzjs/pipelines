@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Core modules for AI Platform Pipeline Components."""
+"""Google Cloud Pipeline Vertex email notification component."""
 
 import os
 
@@ -21,4 +21,6 @@ __all__ = [
     'VertexNotificationEmailOp',
 ]
 
-VertexNotificationEmailOp = vertex_notification_email_component.vertex_pipelines_notification_email
+VertexNotificationEmailOp = (
+    vertex_notification_email_component.vertex_pipelines_notification_email
+)

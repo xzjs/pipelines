@@ -16,11 +16,11 @@ import unittest
 import datetime
 
 import kfp_server_api
-from kfp_server_api.models.api_resource_reference import ApiResourceReference  # noqa: E501
+from kfp_server_api.models.v2beta1_pipeline_version_reference import V2beta1PipelineVersionReference  # noqa: E501
 from kfp_server_api.rest import ApiException
 
-class TestApiResourceReference(unittest.TestCase):
-    """ApiResourceReference unit test stubs"""
+class TestV2beta1PipelineVersionReference(unittest.TestCase):
+    """V2beta1PipelineVersionReference unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,25 +29,22 @@ class TestApiResourceReference(unittest.TestCase):
         pass
 
     def make_instance(self, include_optional):
-        """Test ApiResourceReference
+        """Test V2beta1PipelineVersionReference
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = kfp_server_api.models.api_resource_reference.ApiResourceReference()  # noqa: E501
+        # model = kfp_server_api.models.v2beta1_pipeline_version_reference.V2beta1PipelineVersionReference()  # noqa: E501
         if include_optional :
-            return ApiResourceReference(
-                key = kfp_server_api.models.api_resource_key.apiResourceKey(
-                    type = 'UNKNOWN_RESOURCE_TYPE', 
-                    id = '0', ), 
-                name = '0', 
-                relationship = 'UNKNOWN_RELATIONSHIP'
+            return V2beta1PipelineVersionReference(
+                pipeline_id = '0', 
+                pipeline_version_id = '0'
             )
         else :
-            return ApiResourceReference(
+            return V2beta1PipelineVersionReference(
         )
 
-    def testApiResourceReference(self):
-        """Test ApiResourceReference"""
+    def testV2beta1PipelineVersionReference(self):
+        """Test V2beta1PipelineVersionReference"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
 

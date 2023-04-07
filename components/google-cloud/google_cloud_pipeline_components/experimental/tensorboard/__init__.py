@@ -15,14 +15,14 @@
 
 import os
 
-try:
-  from kfp.v2.components import load_component_from_file
-except ImportError:
-  from kfp.components import load_component_from_file
+from kfp.components import load_component_from_file
 
 __all__ = [
     'TensorboardExperimentCreatorOp',
 ]
 
 TensorboardExperimentCreatorOp = load_component_from_file(
-        os.path.join(os.path.dirname(__file__), 'tensorboard_experiment_creator.yaml'))
+    os.path.join(
+        os.path.dirname(__file__), 'tensorboard_experiment_creator.yaml'
+    )
+)

@@ -15,10 +15,7 @@
 
 import os
 
-try:
-  from kfp.v2.components import load_component_from_file
-except ImportError:
-  from kfp.components import load_component_from_file
+from kfp.components import load_component_from_file
 
 __all__ = [
     'DataflowFlexTemplateJobOp',
@@ -27,12 +24,20 @@ __all__ = [
 
 # TODO(wwoo): remove try block after experimental components are migrated to v2.
 try:
-  from .flex_template import component as dataflow_flex_template_component # type: ignore
-  DataflowFlexTemplateJobOp = dataflow_flex_template_component.dataflow_flex_template
+  from .flex_template import component as dataflow_flex_template_component  # type: ignore
+
+  DataflowFlexTemplateJobOp = (
+      dataflow_flex_template_component.dataflow_flex_template
+  )
 except ImportError:
+
   def _raise_unsupported(*args, **kwargs):
-    raise ImportError('DataflowFlexTemplateJobOp requires KFP SDK v2.0.0b1 or higher.')
+    raise ImportError(
+        'DataflowFlexTemplateJobOp requires KFP SDK v2.0.0b1 or higher.'
+    )
+
   DataflowFlexTemplateJobOp = _raise_unsupported
 
 DataflowPythonJobOp = load_component_from_file(
-    os.path.join(os.path.dirname(__file__), 'python_job/component.yaml'))
+    os.path.join(os.path.dirname(__file__), 'python_job/component.yaml')
+)

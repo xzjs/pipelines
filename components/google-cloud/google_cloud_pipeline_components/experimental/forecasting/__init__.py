@@ -19,10 +19,7 @@ from typing import Optional
 from google.cloud import aiplatform as aiplatform_sdk
 from google_cloud_pipeline_components.aiplatform import utils
 
-try:
-    from kfp.v2.components import load_component_from_file
-except ImportError:
-    from kfp.components import load_component_from_file
+from kfp.components import load_component_from_file
 
 
 __all__ = [
@@ -32,11 +29,15 @@ __all__ = [
 ]
 
 ForecastingPreprocessingOp = load_component_from_file(
-        os.path.join(os.path.dirname(__file__), 'preprocess/component.yaml'))
+    os.path.join(os.path.dirname(__file__), 'preprocess/component.yaml')
+)
 
 ForecastingValidationOp = load_component_from_file(
-        os.path.join(os.path.dirname(__file__), 'validate/component.yaml'))
+    os.path.join(os.path.dirname(__file__), 'validate/component.yaml')
+)
 
 ForecastingPrepareDataForTrainOp = load_component_from_file(
     os.path.join(
-        os.path.dirname(__file__), 'prepare_data_for_train/component.yaml'))
+        os.path.dirname(__file__), 'prepare_data_for_train/component.yaml'
+    )
+)

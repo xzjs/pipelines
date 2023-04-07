@@ -15,12 +15,7 @@
 
 import os
 
-# pylint: disable=g-import-not-at-top
-try:
-  from kfp.v2.components import load_component_from_file
-except ImportError:
-  from kfp.components import load_component_from_file
-# pylint: enable=g-import-not-at-top
+from kfp.components import load_component_from_file  # pylint: enable=g-import-not-at-top
 
 __all__ = [
     'ForecastingStage1TunerOp',
@@ -31,13 +26,17 @@ __all__ = [
 ]
 
 ProphetTrainerOp = load_component_from_file(
-    os.path.join(os.path.dirname(__file__), 'prophet_trainer.yaml'))
+    os.path.join(os.path.dirname(__file__), 'prophet_trainer.yaml')
+)
 ForecastingStage1TunerOp = load_component_from_file(
-    os.path.join(os.path.dirname(__file__), 'forecasting_stage_1_tuner.yaml'))
+    os.path.join(os.path.dirname(__file__), 'forecasting_stage_1_tuner.yaml')
+)
 ForecastingEnsembleOp = load_component_from_file(
-    os.path.join(os.path.dirname(__file__), 'forecasting_ensemble.yaml'))
+    os.path.join(os.path.dirname(__file__), 'forecasting_ensemble.yaml')
+)
 ForecastingStage2TunerOp = load_component_from_file(
-    os.path.join(os.path.dirname(__file__), 'forecasting_stage_2_tuner.yaml'))
+    os.path.join(os.path.dirname(__file__), 'forecasting_stage_2_tuner.yaml')
+)
 ModelEvaluationForecastingOp = load_component_from_file(
     os.path.join(os.path.dirname(__file__), 'model_evaluation_forecasting.yaml')
 )

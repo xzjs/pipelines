@@ -19,7 +19,7 @@ import os
 from google_cloud_pipeline_components.experimental.custom_job import utils
 import kfp
 from kfp import components
-from kfp.v2 import compiler
+from kfp import compiler
 
 import unittest
 
@@ -56,10 +56,10 @@ class CustomTrainingJobWrapperCompileTest(unittest.TestCase):
     if os.path.exists(self._package_path):
       os.remove(self._package_path)
 
-  def _create_a_pytnon_based_component(self) -> callable:
+  def _create_a_pytnon_based_component(self):
     """Creates a test python based component factory."""
 
-    @kfp.v2.dsl.component
+    @kfp.dsl.component
     def sum_numbers(a: int, b: int) -> int:
       return a + b
 

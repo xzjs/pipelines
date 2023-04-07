@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Core modules for AI Platform Pipeline Components."""
+"""Google Cloud Pipeline Dataset components."""
 
 import os
 from kfp.components import load_component_from_file
@@ -46,22 +46,34 @@ __all__ = [
 ImageDatasetCreateOp = create_image_dataset_component.image_dataset_create
 TabularDatasetCreateOp = create_tabular_dataset_component.tabular_dataset_create
 TextDatasetCreateOp = create_text_dataset_component.text_dataset_create
-TimeSeriesDatasetCreateOp = create_time_series_dataset_component.time_series_dataset_create
+TimeSeriesDatasetCreateOp = (
+    create_time_series_dataset_component.time_series_dataset_create
+)
 VideoDatasetCreateOp = create_video_dataset_component.video_dataset_create
 ImageDatasetExportDataOp = export_image_dataset_component.image_dataset_export
-TabularDatasetExportDataOp = export_tabular_dataset_component.tabular_dataset_export
+TabularDatasetExportDataOp = (
+    export_tabular_dataset_component.tabular_dataset_export
+)
 TextDatasetExportDataOp = export_text_dataset_component.text_dataset_export
-TimeSeriesDatasetExportDataOp = export_time_series_dataset_component.time_series_dataset_export
+TimeSeriesDatasetExportDataOp = (
+    export_time_series_dataset_component.time_series_dataset_export
+)
 VideoDatasetExportDataOp = export_video_dataset_component.video_dataset_export
 
 ImageDatasetImportDataOp = load_component_from_file(
     os.path.join(
-        os.path.dirname(__file__), 'import_image_dataset/component.yaml'))
+        os.path.dirname(__file__), 'import_image_dataset/component.yaml'
+    )
+)
 
 TextDatasetImportDataOp = load_component_from_file(
     os.path.join(
-        os.path.dirname(__file__), 'import_text_dataset/component.yaml'))
+        os.path.dirname(__file__), 'import_text_dataset/component.yaml'
+    )
+)
 
 VideoDatasetImportDataOp = load_component_from_file(
     os.path.join(
-        os.path.dirname(__file__), 'import_video_dataset/component.yaml'))
+        os.path.dirname(__file__), 'import_video_dataset/component.yaml'
+    )
+)
